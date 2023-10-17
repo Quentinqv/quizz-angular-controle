@@ -35,15 +35,28 @@ export class RegisterComponent implements OnInit {
   }
 
   private checkPasswords(control: FormGroup) {
+    const username = control.get('username');
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
-    return password?.value !== confirmPassword?.value ? { missMatch: true } : null;
+
+    if (password?.value !== confirmPassword?.value) {
+      confirmPassword?.setErrors({ missMatch: true });
+      return { missMatch: true };
+    }
+
+    if (password?.value.includes(username?.value)) {
+      password?.setErrors({ usernameInPassword: true });
+      return { usernameInPassword: true };
+    }
+
+    return null;
   }
 
   get getErrorLabel() {
     if (this.registerForm.errors?.['required']) return 'Les champs sont obligatoires';
     if (!!this.registerForm.controls?.['password']?.errors?.['minlength']) return `La longueur minimal pour votre mot de passe est ${this.registerForm.controls?.['password']?.errors?.['minlength']?.requiredLength}`;
     if (this.registerForm.errors?.['missMatch']) return 'Les mots de passe ne correspondent pas';
+    if (this.registerForm.errors?.['usernameInPassword']) return 'Votre mot de passe ne doit pas contenir votre nom d\'utilisateur';
     return 'Un problème est survenu';
   }
 }

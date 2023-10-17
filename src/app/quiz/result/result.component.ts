@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from "../../shared/services/quiz.service";
-import { Router } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-result',
@@ -11,12 +11,15 @@ export class ResultComponent implements OnInit {
   score = 0;
   scoreTotal = this.quizService.quizContent.length;
   playerName = this.quizService.playerName;
+  startDate = this.quizService.startDate;
+  endDate = new Date();
 
-  constructor(private quizService: QuizService, private router: Router) { }
+  constructor(private quizService: QuizService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.quizService.checkAnswers();
     this.score = this.quizService.score;
+    this.startDate = this.quizService.startDate;
   }
 
   goToHome() {

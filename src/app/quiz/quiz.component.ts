@@ -24,6 +24,8 @@ export class QuizComponent implements OnInit {
       this.playerName = params['playerName'];
       this.categorieId = params['categorieId'];
     });
+
+    this.quizService.setStartDate();
   }
 
   goToResultPage() {

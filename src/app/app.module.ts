@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CategoriesComponent } from './quiz/categories/categories.component';
+import { DateToSecondsPipe } from './shared/pipes/date-to-seconds.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CategoriesComponent } from './quiz/categories/categories.component';
     AnswerComponent,
     LoginComponent,
     RegisterComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    DateToSecondsPipe
   ],
   imports: [
     BrowserModule,
