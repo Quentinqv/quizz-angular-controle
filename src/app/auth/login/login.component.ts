@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.saveUser();
       this.router.navigate(['/']);
     }, (error) => {
+      console.log(error);
       alert('Erreur dans la requête');
     });
   }
