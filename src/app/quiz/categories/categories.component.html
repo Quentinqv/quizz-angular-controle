@@ -1,0 +1,18 @@
+<!-- Angular Page displaying all categories, clicking on the categories redirect to the categorie page with its ID in get parameter -->
+
+<h1>Categories</h1>
+
+<div id="search_container">
+    <form class="search" (ngSubmit)="searchCategorie()">
+        <input type="text" placeholder="Search" [(ngModel)]="search" name="searchbar">
+        <button type="submit">Search</button>
+        <button (click)="reset()" type="button">Reset</button>
+    </form>
+</div>
+
+<section *ngFor="let content of categories">
+    <div class="category" (click)="goToCategorie(content.id)">
+        <h2>{{content.categoryLabel}}</h2>
+    </div>
+</section>
+
