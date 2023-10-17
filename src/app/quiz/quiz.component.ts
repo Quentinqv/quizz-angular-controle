@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { QuizService } from "../shared/services/quiz.service";
 
@@ -10,6 +10,7 @@ import { QuizService } from "../shared/services/quiz.service";
 export class QuizComponent implements OnInit {
   isQuizFinished = this.quizService.isQuizFinished;
   playerName = '';
+  categorieId: number | undefined = undefined;
 
   constructor(
     private quizService: QuizService,
@@ -21,6 +22,7 @@ export class QuizComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.quizService.playerName = params['playerName'];
       this.playerName = params['playerName'];
+      this.categorieId = params['categorieId'];
     });
   }
 
