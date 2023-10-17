@@ -485,9 +485,14 @@
   ],
   "users": [
     {
+      "id": 1,
       "username": "vitoux",
       "password": "vitoux"
+    },
+    {
+      "username": "quentin",
+      "password": "quentin",
+      "id": 2
     }
   ]
 }
-
